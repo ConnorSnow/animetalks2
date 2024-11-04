@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peliculas vistas by: Santiago Bayona Bohorquez</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div> <!-- Div para el fondo de la imagen -->
+<header class="bg-dark text-white text-center py-3">
+    <h1>Peliculas vistas by: Santiago Bayona Bohorquez.</h1>
+</header>
+
+<div class="container my-4 position-relative">
+    <!-- Filtros y búsqueda -->
+    <div class="row mb-4">
+        
+       
+   
+        
+    </div>
+
+    <!-- Listado de películas -->
+    <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 style="color: white;">Buscar Película</h2>
+                <div class="input-group">
+                    <input type="text" id="search-input" class="form-control" placeholder="Buscar por título...">
+                    <button id="search-button" class="btn btn-primary btn-black">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="search-result"></div>
+    
+        <div class="row movie-list" id="movie-list">
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="/img/opp2.jpg" class="card-img-top" alt="Portada Película">
+                    <div class="card-body">
+                        <h5 class="card-title">Oppenheimer</h5>
+                        <p class="card-text">Fecha de lanzamiento: 2023-07-21</p>
+                        <a href="detalle.html?id=1" class="btn btn-primary btn-black">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="/img/bar.jpg" class="card-img-top" alt="Portada Película">
+                    <div class="card-body">
+                        <h5 class="card-title">Barbie</h5>
+                        <p class="card-text">Fecha de lanzamiento: 2023-07-21</p>
+                        <a href="detalle.html?id=2" class="btn btn-primary btn-black">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="/img/ded.jpg" class="card-img-top" alt="Portada Película">
+                    <div class="card-body">
+                        <h5 class="card-title">Deadpool 3</h5>
+                        <p class="card-text">Fecha de lanzamiento: 2024-05-03</p>
+                        <a href="detalle.html?id=3" class="btn btn-primary btn-black">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="/img/sp.jpg" class="card-img-top" alt="Portada Película">
+                    <div class="card-body">
+                        <h5 class="card-title">Spiderman Across the Spiderverse</h5>
+                        <p class="card-text">Fecha de lanzamiento: 2023-06-02</p>
+                        <a href="detalle.html?id=4" class="btn btn-primary btn-black">Ver detalles</a>
+                    </div>
+                </div> 
+            </div>
+            <!-- Más películas aquí... -->
+        </div>
+    </div>
+    
+            
+            <!-- Más películas aquí... -->
+        </div>
+    </div>
+    
+
+        <!-- Puedes añadir más películas de la misma manera -->
+    </div>
+</div>
+
+<script>
+    // Base de datos de películas
+   // Base de datos de películas
+const movies = [
+    {
+        id: 1,
+        title: "Oppenheimer",
+        date: "2023-07-21",
+        genre: "Drama, Historia",
+        synopsis: "La historia de J. Robert Oppenheimer...",
+        actors: "Cillian Murphy, Emily Blunt, Matt Damon, Robert Downey Jr.",
+        review: "Una representación impresionante...",
+        image: "/img/opp2.jpg",
+        video: "/videos/opp.mp4"
+    },
+    {
+        id: 2,
+        title: "Barbie",
+        date: "2023-07-21",
+        genre: "Comedia, Fantasía",
+        synopsis: "Barbie y Ken se embarcan en una aventura...",
+        actors: "Margot Robbie, Ryan Gosling...",
+        review: "Una película colorida y divertida...",
+        image: "/img/barbie.png",
+        video: "/videos/barbie.mp4"
+    },
+    {
+        id: 3,
+        title: "Deadpool 3",
+        date: "2024-05-03",
+        genre: "Acción, Comedia, Aventura",
+        synopsis: "Deadpool regresa para una nueva aventura...",
+        actors: "Ryan Reynolds, Hugh Jackman...",
+        review: "Una película llena de acción y humor...",
+        image: "/img/deadpool3.jpg",
+        video: "/videos/deadpool3.mp4"
+    },
+    {
+        id: 4,
+        title: "Spider-Man: Across the Spider-Verse",
+        date: "2023-06-02",
+        genre: "Animación, Acción, Aventura",
+        synopsis: "Miles Morales regresa para una nueva aventura...",
+        actors: "Shameik Moore, Hailee Steinfeld...",
+        review: "Una secuela deslumbrante que eleva el listón...",
+        image: "/img/spiderverse.jpg",
+        video: "/videos/spiderverse.mp4"
+    }
+];
+
+// Función para buscar una película
+function searchMovie(query) {
+    return movies.find(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+}
+
+// Manejador del botón de búsqueda
+document.getElementById('search-button').addEventListener('click', function() {
+    const query = document.getElementById('search-input').value;
+    const result = searchMovie(query);
+
+    // Mostrar el resultado o un mensaje de error
+    const resultContainer = document.getElementById('search-result');
+    const movieList = document.getElementById('movie-list');
+    
+    resultContainer.innerHTML = ''; // Limpiar resultados previos
+    movieList.style.display = 'none'; // Ocultar lista de películas cuando se hace una búsqueda
+
+    if (result) {
+        resultContainer.innerHTML = `
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="card">
+                    <img src="${result.image}" class="card-img-top" alt="Portada Película">
+                    <div class="card-body">
+                        <h5 class="card-title">${result.title}</h5>
+                        <p class="card-text">Fecha de lanzamiento: ${result.date}</p>
+                        <a href="detalle.html?id=${result.id}" class="btn btn-primary btn-black">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        resultContainer.innerHTML = `<p style="color: white;">No se encontró ninguna película con ese nombre.</p>`;
+    }
+});
+
+</script>
+
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<footer class="footer">
+    &copy; 2024 Santiago Bayona Bohorquez. Todos los derechos reservados.
+</footer>
+
+</body>
+</html>
