@@ -6,10 +6,11 @@ body {
 }
 
 /* Estilo para el header */
-header {
+header  {
   position: relative;
   z-index: 2; /* Asegura que el header esté sobre el video */
-  background-color: rgba(0, 0, 0, 0.7); /* Color de fondo semi-transparente */
+  /*background-color: rgba(41, 199, 173, 0.7); /* Color de fondo semi-transparente */
+
   color: white; /* Color del texto en el header */
   padding: 20px; /* Espaciado en el header */
 }
