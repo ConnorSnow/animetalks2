@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalle de la Película</title>
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styledet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="bg-primary text-white text-center py-3">
+      <h1>Detalle de la Película</h1>
+    </header>
+
+    <div class="container my-4">
+      <div class="video-container">
+        <video autoplay muted loop class="video-background" id="movie-video">
+          <source src="" type="video/mp4" />
+          Tu navegador no soporta la reproducción de videos.
+        </video>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <img
+            src=""
+            class="img-fluid"
+            alt="Portada Película"
+            id="movie-image"
+          />
+        </div>
+        <div class="col-12 col-md-8">
+          <h2 id="movie-title">Título de la Película</h2>
+          <p>
+            <strong>Fecha de lanzamiento:</strong> <span id="movie-date"></span>
+          </p>
+          <p><strong>Género:</strong> <span id="movie-genre"></span></p>
+          <p><strong>Sinopsis:</strong> <span id="movie-synopsis"></span></p>
+          <p>
+            <strong>Actores principales:</strong>
+            <span id="movie-actors"></span>
+          </p>
+          <p><strong>Reseña:</strong> <span id="movie-review"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-comment">
+      <h5>Deja un comentario sobre la película:</h5>
+      <form id="comment-form">
+        <div class="mb-3">
+          <label for="comment" class="form-label">Tu comentario</label>
+          <textarea
+            class="form-control"
+            id="comment"
+            rows="3"
+            placeholder="Escribe tu comentario aquí..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+
+    <div class="comments-section">
+      <h3>Comentarios:</h3>
+      <ul id="comments-list">
+        <!-- Los comentarios aparecerán aquí -->
+      </ul>
+    </div>
+
+    <script>
+      // Obtener el parámetro de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const movieId = urlParams.get("id");
+
+      // Datos de ejemplo para las películas
+      const movies = {
+        1: {
+          title: "Your Name",
+          date: "2016-08-26",
+          genre: "Animación, Drama, Romance",
+          synopsis:
+            "La historia de dos jóvenes, Taki y Mitsuha, que inexplicablemente intercambian cuerpos y crean una conexión emocional a pesar de la distancia y el tiempo.",
+          actors: "Ryunosuke Kamiki, Mone Kamishiraishi",
+          review:
+            "Una obra maestra visualmente hermosa con una historia conmovedora.",
+          image: "//", //Modificar esto
+          video: "//", //Modificar esto
+          comments: [
+            "Una historia emotiva que me hizo llorar. La conexión entre Taki y Mitsuha es increíblemente profunda.",
+            "A pesar de la animación hermosa, el cambio constante entre los personajes me confundió un poco.",
+            "Your Name es una película que me hizo reflexionar sobre el destino y las conexiones humanas. ¡Simplemente maravillosa!",
+            "No entendí por completo el final, pero el viaje valió la pena. Los paisajes eran impresionantes.",
+          ],
+        },
+        2: {
+          title: "El Viaje de Chihiro",
+          date: "2001-07-20",
+          genre: "Animación, Fantasía, Aventura",
+          synopsis:
+            "Chihiro, una niña de diez años, se adentra en un mundo de espíritus y dioses mientras intenta salvar a sus padres transformados en cerdos.",
+          actors: "Rumi Hiiragi, Miyu Irino",
+          review:
+            "Una historia mágica llena de creatividad y profundidad emocional.",
+          image: "//", //Modificar esto
+          video: "//", //Modificar esto
+          comments: [
+            "El Viaje de Chihiro es una obra maestra visualmente fascinante, con personajes únicos que me cautivaron desde el primer momento.",
+            "La historia es un poco extraña y confusa en algunos puntos, pero la creatividad detrás de cada escena es innegable.",
+            "Una experiencia mágica que me hizo sentir como un niño de nuevo. Chihiro es un personaje con mucho corazón.",
+            "Aunque es una película para todas las edades, algunas escenas me parecieron un poco aterradoras para los más pequeños.",
+          ],
+        },
+        // Agrega más películas según sea necesario
+        3: {
+          title: "Deadpool 3",
+          title: "Akira",
+          date: "1988-07-16",
+          genre: "Animación, Ciencia Ficción, Acción",
+          synopsis:
+            "En un Neo-Tokio post-apocalíptico, un joven llamado Tetsuo adquiere poderes psíquicos desatando un conflicto que amenaza a toda la ciudad.",
+          actors: "Mitsuo Iwata, Nozomu Sasaki",
+          review:
+            "Una película pionera que influenció a generaciones con su animación y temas oscuros.",
+          image: "///", //Modificar esto
+          video: "///", //Modificar esto
+          comments: [
+            "Akira es una película intensa y llena de acción. La animación es impresionante para su época.",
+            "Un clásico del anime que redefine la ciencia ficción. La historia de Tetsuo y Kaneda me dejó pensando por días.",
+            "Aunque visualmente impactante, algunas partes de Akira pueden ser difíciles de entender en la primera visualización.",
+            "El mundo post-apocalíptico de Akira es aterrador y fascinante a la vez. ¡Un verdadero hito en la animación!",
+          ],
+        },
+
+        4: {
+          title: "Kimi no Suizou wo Tabetai",
+          date: "2018-09-01",
+          genre: "Animación, Drama, Romance",
+          synopsis:
+            "La historia de un joven que descubre que su compañera de clase padece una enfermedad terminal y decide pasar tiempo con ella en sus últimos momentos.",
+          actors: "Mahiro Takasugi, Lynn",
+          review:
+            "Un relato profundo y emotivo que explora la amistad y la pérdida.",
+          image: "///", //Modificar esto
+          video: "///", //Modificar esto
+          comments: [
+            "Kimi no Suizou wo Tabetai es un viaje emocional. La relación entre los personajes es conmovedora y auténtica.",
+            "Una historia desgarradora que te hace valorar cada momento de la vida. Me quedé reflexionando después de verla.",
+            "Aunque la película es triste, la lección sobre la amistad y la pérdida es inspiradora. Sin duda, una experiencia inolvidable.",
+            "Sentí que algunas escenas eran un poco lentas, pero en general la historia vale la pena. ¡Es muy conmovedora!",
+          ],
+        },
+      };
+
+      // Ocultar todos los detalles por defecto
+      const allMovies = document.querySelectorAll(".movie-details");
+      allMovies.forEach((movie) => (movie.style.display = "none"));
+
+      if (movieId && movies[movieId]) {
+        const movie = movies[movieId];
+        // Actualizar los detalles de la película
+        document.getElementById("movie-title").textContent = movie.title;
+        document.getElementById("movie-date").textContent = movie.date;
+        document.getElementById("movie-genre").textContent = movie.genre;
+        document.getElementById("movie-synopsis").textContent = movie.synopsis;
+        document.getElementById("movie-actors").textContent = movie.actors;
+        document.getElementById("movie-review").textContent = movie.review;
+        document.getElementById("movie-image").src = movie.image;
+        document.getElementById("movie-video").src = movie.video;
+
+        // Cargar el video correspondiente
+        document.getElementById("movie-video").load();
+
+        // Mostrar comentarios en la lista
+        const commentList = document.getElementById("comments-list");
+        movie.comments.forEach((comment) => {
+          const li = document.createElement("li");
+          li.classList.add("comment-item");
+          li.textContent = comment;
+          commentList.appendChild(li);
+        });
+      }
+    </script>
+
+    <script>
+      // Seleccionamos el formulario y la lista de comentarios
+      const form = document.getElementById("comment-form");
+      const commentList = document.getElementById("comments-list");
+
+      // Escuchamos el evento 'submit' del formulario
+      form.addEventListener("submit", function (event) {
+        // Evitar que la página se recargue al enviar el formulario
+        event.preventDefault();
+
+        // Obtenemos el valor del comentario ingresado
+        const commentInput = document.getElementById("comment");
+        const commentText = commentInput.value;
+
+        // Verificamos si el comentario no está vacío
+        if (commentText.trim() !== "") {
+          // Crear un nuevo elemento de lista (li) para el comentario
+          const newComment = document.createElement("li");
+          newComment.classList.add("comment-item");
+          newComment.textContent = commentText;
+
+          // Añadir el nuevo comentario a la lista
+          commentList.appendChild(newComment);
+
+          // Limpiar el campo de texto
+          commentInput.value = "";
+        }
+      });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer">
+      &copy; 2024 Santiago Bayona Bohorquez. Todos los derechos reservados.
+    </footer>
+  </body>
+</html>
+

@@ -1,0 +1,140 @@
+/* Reset de márgenes y padding */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif; /* Usa la fuente Nunito */
+}
+
+/* Estilo para el header */
+header {
+  position: relative;
+  z-index: 2; /* Asegura que el header esté sobre el video */
+  background-color: rgba(0, 0, 0, 0.7); /* Color de fondo semi-transparente */
+  color: white; /* Color del texto en el header */
+  padding: 20px; /* Espaciado en el header */
+}
+
+/* Asegura que el contenedor tenga posición relativa */
+.position-relative {
+  position: relative;
+}
+
+/* Estilo para el video de fondo */
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que el video cubra todo el contenedor */
+  filter: blur(8px); /* Aplica un desenfoque al video */
+  opacity: 0.7; /* Ajusta la opacidad para que el contenido sea visible */
+}
+.video-container {
+  position: fixed; /* Mantener el video fijo en el fondo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Asegura que el video esté detrás */
+}
+
+/* Asegura que el contenido esté por encima del video */
+.container {
+  position: relative; /* Necesario para que el z-index funcione */
+  z-index: 1; /* Asegura que el contenido esté por encima del video */
+  color: white; /* Cambia el color del texto para un mejor contraste */
+  padding: 20px; /* Añade algo de espaciado al contenido */
+}
+
+/* Estilos para el título y texto */
+h2 {
+  margin-top: 0; /* Elimina el margen superior del título */
+  color: white;
+  margin-top: 20px; /* Espacio superior */
+  padding: 15px; /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semi-transparente */
+  border-radius: 8px; /* Bordes redondeados */
+  z-index: 1; /* Asegura que esté por encima del video */
+  position: relative;
+}
+
+p {
+  margin: 10px 0; /* Espaciado entre los párrafos */
+  color: white;
+  margin-top: 20px; /* Espacio superior */
+  padding: 15px; /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semi-transparente */
+  border-radius: 8px; /* Bordes redondeados */
+  z-index: 1; /* Asegura que esté por encima del video */
+  position: relative;
+}
+
+/* Estilo para las imágenes */
+.img-fluid {
+  max-width: 100%; /* Asegura que la imagen no sobrepase el ancho del contenedor */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+
+/* Estilos de botones, si los tienes */
+.btn {
+  background-color: black; /* Cambia el fondo de los botones a negro */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin bordes */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.btn:hover {
+  background-color: darkgray; /* Color al pasar el ratón por encima del botón */
+}
+
+.row {
+  position: relative; /* Asegura que las columnas también queden por encima del video */
+  z-index: 2; /* Asegura que las columnas estén por encima del video */
+}
+.footer {
+  position: fixed;
+  left: 10px; /* Mueve el footer a la izquierda */
+  bottom: 10px; /* Mueve el footer hacia abajo */
+  font-size: 0.9rem;
+  color: #666;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+/* Estilos para el contenedor de añadir comentario */
+.add-comment {
+  color: white;
+  margin-top: 20px; /* Espacio superior */
+  padding: 15px; /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semi-transparente */
+  border-radius: 8px; /* Bordes redondeados */
+  z-index: 1; /* Asegura que esté por encima del video */
+  position: relative;
+}
+
+/* Estilo para el título de comentarios */
+.comments-section {
+  margin-top: 20px; /* Espacio superior */
+  padding: 15px; /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semi-transparente */
+  border-radius: 8px; /* Bordes redondeados */
+  color: white; /* Color del texto */
+  z-index: 1; /* Asegura que esté por encima del video */
+  position: relative;
+}
+
+/* Estilos para la lista de comentarios */
+#comments-list {
+  list-style-type: none; /* Sin viñetas */
+  padding: 0; /* Sin padding */
+  margin-top: 10px; /* Espacio superior */
+}
+
+/* Estilo para cada comentario */
+.comment-item {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo claro con opacidad */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espaciado inferior */
+  border-radius: 5px; /* Bordes redondeados */
+  color: white; /* Color del texto del comentario */
+}
