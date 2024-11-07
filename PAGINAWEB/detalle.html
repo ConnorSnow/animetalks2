@@ -1,243 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalle de la Película</title>
     <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styledet.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">   
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styledet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="bg-primary text-white text-center py-3">
+      <h1>Detalle de la Película</h1>
+    </header>
 
-<header class="bg-dark text-white text-center py-3">
-    <h1>Detalle de la Película</h1>
-</header>
-
-<div class="container my-4">  
-    <div class="video-container">
+    <div class="container my-4">
+      <div class="video-container">
         <video autoplay muted loop class="video-background" id="movie-video">
-            <source src="" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
+          <source src="" type="video/mp4" />
+          Tu navegador no soporta la reproducción de videos.
         </video>
-    </div> 
+      </div>
 
-    <div class="row"> 
+      <div class="row">
         <div class="col-12 col-md-4">
-            <img src="" class="img-fluid" alt="Portada Película" id="movie-image">
+          <img
+            src=""
+            class="img-fluid"
+            alt="Portada Película"
+            id="movie-image"
+          />
         </div>
         <div class="col-12 col-md-8">
-            <h2 id="movie-title">Título de la Película</h2>
-            <p><strong>Fecha de lanzamiento:</strong> <span id="movie-date"></span></p>
-            <p><strong>Género:</strong> <span id="movie-genre"></span></p>
-            <p><strong>Sinopsis:</strong> <span id="movie-synopsis"></span></p>
-            <p><strong>Actores principales:</strong> <span id="movie-actors"></span></p>
-            <p><strong>Reseña:</strong> <span id="movie-review"></span></p>
+          <h2 id="movie-title">Título de la Película</h2>
+          <p>
+            <strong>Fecha de lanzamiento:</strong> <span id="movie-date"></span>
+          </p>
+          <p><strong>Género:</strong> <span id="movie-genre"></span></p>
+          <p><strong>Sinopsis:</strong> <span id="movie-synopsis"></span></p>
+          <p>
+            <strong>Actores principales:</strong>
+            <span id="movie-actors"></span>
+          </p>
+          <p><strong>Reseña:</strong> <span id="movie-review"></span></p>
         </div>
+      </div>
     </div>
-    
 
-
-</div>
-
-<div class="add-comment">
-    <h5>Deja un comentario sobre la película:</h5>
-    <form id="comment-form">
+    <div class="add-comment">
+      <h5>Deja un comentario sobre la película:</h5>
+      <form id="comment-form">
         <div class="mb-3">
-            <label for="comment" class="form-label">Tu comentario</label>
-            <textarea class="form-control" id="comment" rows="3" placeholder="Escribe tu comentario aquí..." required></textarea>
+          <label for="comment" class="form-label">Tu comentario</label>
+          <textarea
+            class="form-control"
+            id="comment"
+            rows="3"
+            placeholder="Escribe tu comentario aquí..."
+            required
+          ></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</div>
+      </form>
+    </div>
 
-<div class="comments-section">
-    <h3>Comentarios:</h3>
-    <ul id="comments-list">
+    <div class="comments-section">
+      <h3>Comentarios:</h3>
+      <ul id="comments-list">
         <!-- Los comentarios aparecerán aquí -->
-    </ul>
-</div>
+      </ul>
+    </div>
 
-<script>
-    // Obtener el parámetro de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const movieId = urlParams.get('id');
+    <script>
+      // Obtener el parámetro de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const movieId = urlParams.get("id");
 
-    // Datos de ejemplo para las películas
-    const movies = {
+      // Datos de ejemplo para las películas
+      const movies = {
         1: {
-            title: "Oppenheimer",
-         date: "2023-07-21", // Fecha de lanzamiento
-    genre: "Drama, Historia", // Géneros
-    synopsis: "La historia de J. Robert Oppenheimer, el físico teórico que fue fundamental en el desarrollo de la bomba atómica durante la Segunda Guerra Mundial y las implicaciones morales de sus acciones.",
-    actors: "Cillian Murphy, Emily Blunt, Matt Damon, Robert Downey Jr.", // Actores principales
-    review: "Una representación impresionante de la vida de Oppenheimer, combinando actuaciones excepcionales con una narrativa cautivadora que invita a la reflexión sobre la ciencia y la moralidad.",
-            image: "/img/opp2.jpg",
-            video: "/videos/opp.mp4",
-            comments: [
-            "¡Increíble! La actuación de los protagonistas fue magistral. No puedo creer que no haya ganado un Oscar.",
-            "La trama era predecible y aburrida. Me quedé dormido a la mitad.",
-            ]
+          title: "Your Name",
+          date: "2016-08-26",
+          genre: "Animación, Drama, Romance",
+          synopsis:
+            "La historia de dos jóvenes, Taki y Mitsuha, que inexplicablemente intercambian cuerpos y crean una conexión emocional a pesar de la distancia y el tiempo.",
+          actors: "Ryunosuke Kamiki, Mone Kamishiraishi",
+          review:
+            "Una obra maestra visualmente hermosa con una historia conmovedora.",
+          image: "//", //Modificar esto
+          video: "//", //Modificar esto
+          comments: [
+            "Una historia emotiva que me hizo llorar. La conexión entre Taki y Mitsuha es increíblemente profunda.",
+            "A pesar de la animación hermosa, el cambio constante entre los personajes me confundió un poco.",
+            "Your Name es una película que me hizo reflexionar sobre el destino y las conexiones humanas. ¡Simplemente maravillosa!",
+            "No entendí por completo el final, pero el viaje valió la pena. Los paisajes eran impresionantes.",
+          ],
         },
         2: {
-            title: "Barbie",
-    date: "2023-07-21", // Fecha de lanzamiento
-    genre: "Comedia, Fantasía", // Géneros
-    synopsis: "Barbie y Ken se embarcan en una aventura inesperada al dejar su hogar en Barbieland para descubrir el mundo real, enfrentando desafíos y explorando el significado de la verdadera identidad.",
-    actors: "Margot Robbie, Ryan Gosling, America Ferrera, Simu Liu, Dua Lipa", // Actores principales
-    review: "Una película colorida y divertida que reinventa la historia de Barbie, combinando humor y reflexión sobre la identidad y la autoaceptación.",
-            image: "/img/bar.jpg",
-            video: "/videos/bar.mp4",// Cambia esto si tienes otro video
-            comments:[
-                "¡Increíble! La actuación de los protagonistas fue magistral. No puedo creer que no haya ganado un Oscar.",
-    "La trama era predecible y aburrida. Me quedé dormido a la mitad.",
-    "Me encantó la forma en que abordaron temas de identidad y autoaceptación. Definitivamente una película para toda la familia.",
-    "A pesar de las actuaciones increíbles, la trama se siente un poco predecible y falta de profundidad.",
-    "Visualmente impresionante y llena de color, ¡Barbie es un deleite para los ojos! Las actuaciones son hilarantes.",
-    "No estoy seguro de que haya cumplido con todas las expectativas. Algunas partes se sintieron forzadas y no tan orgánicas.",
-    "Una reinvención refrescante de un ícono cultural. Barbie muestra que ser tú misma es lo más importante.",
-    "El final fue un poco decepcionante. Sentí que dejaron muchas preguntas sin respuesta."
-            ]
+          title: "El Viaje de Chihiro",
+          date: "2001-07-20",
+          genre: "Animación, Fantasía, Aventura",
+          synopsis:
+            "Chihiro, una niña de diez años, se adentra en un mundo de espíritus y dioses mientras intenta salvar a sus padres transformados en cerdos.",
+          actors: "Rumi Hiiragi, Miyu Irino",
+          review:
+            "Una historia mágica llena de creatividad y profundidad emocional.",
+          image: "//", //Modificar esto
+          video: "//", //Modificar esto
+          comments: [
+            "El Viaje de Chihiro es una obra maestra visualmente fascinante, con personajes únicos que me cautivaron desde el primer momento.",
+            "La historia es un poco extraña y confusa en algunos puntos, pero la creatividad detrás de cada escena es innegable.",
+            "Una experiencia mágica que me hizo sentir como un niño de nuevo. Chihiro es un personaje con mucho corazón.",
+            "Aunque es una película para todas las edades, algunas escenas me parecieron un poco aterradoras para los más pequeños.",
+          ],
         },
         // Agrega más películas según sea necesario
         3: {
-            title: "Deadpool 3",
-    date: "2024-05-03", // Fecha de lanzamiento
-    genre: "Acción, Comedia, Aventura", // Géneros
-    synopsis: "Deadpool regresa para una nueva aventura, enfrentándose a villanos conocidos y nuevos desafíos mientras rompe la cuarta pared una vez más, llevando la comedia y la acción al siguiente nivel.",
-    actors: "Ryan Reynolds, Hugh Jackman, Morena Baccarin, Leslie Uggams", // Actores principales
-    review: "Una película llena de acción y humor irreverente, Deadpool 3 ofrece más de lo que los fans aman de la franquicia, con giros inesperados y un guiño a su historia anterior.",
-    image: "/img/ded.jpg",        
-    video: "/videos/ded.mp4",
-            comments: [
-            "¡Un regreso épico! Deadpool 3 combina humor y acción de manera brillante, ¡me encantó cada momento!",
-    "La trama se siente un poco desorganizada en comparación con las anteriores. Aunque sigue siendo divertida, no fue lo que esperaba.",
-    "Ryan Reynolds es simplemente perfecto como Deadpool. Su humor y carisma son insuperables.",
-    "El villano podría haber sido más desarrollado. A veces sentí que estaba un poco fuera de lugar en la historia.",
-    "Las referencias culturales son geniales y me hicieron reír a carcajadas. Deadpool nunca decepciona en ese aspecto.",
-    "Me pareció que intentaron hacer demasiadas cosas a la vez, lo que hizo que la historia se sintiera un poco apresurada.",
-    "Una mezcla perfecta de acción y comedia, definitivamente se ha ganado su lugar en el corazón de los fans.",
-    "No sé si se puede superar a las anteriores, pero Deadpool 3 definitivamente se mantiene en la lucha."
-            ]
+          title: "Deadpool 3",
+          title: "Akira",
+          date: "1988-07-16",
+          genre: "Animación, Ciencia Ficción, Acción",
+          synopsis:
+            "En un Neo-Tokio post-apocalíptico, un joven llamado Tetsuo adquiere poderes psíquicos desatando un conflicto que amenaza a toda la ciudad.",
+          actors: "Mitsuo Iwata, Nozomu Sasaki",
+          review:
+            "Una película pionera que influenció a generaciones con su animación y temas oscuros.",
+          image: "///", //Modificar esto
+          video: "///", //Modificar esto
+          comments: [
+            "Akira es una película intensa y llena de acción. La animación es impresionante para su época.",
+            "Un clásico del anime que redefine la ciencia ficción. La historia de Tetsuo y Kaneda me dejó pensando por días.",
+            "Aunque visualmente impactante, algunas partes de Akira pueden ser difíciles de entender en la primera visualización.",
+            "El mundo post-apocalíptico de Akira es aterrador y fascinante a la vez. ¡Un verdadero hito en la animación!",
+          ],
         },
-       
+
         4: {
-            title: "Spider-Man: Across the Spider-Verse",
-    date: "2023-06-02", // Fecha de lanzamiento
-    genre: "Animación, Acción, Aventura", // Géneros
-    synopsis: "Miles Morales regresa para una nueva aventura épica en el multiverso, enfrentándose a nuevos Spider-People y desafíos mientras descubre su verdadero potencial como Spider-Man.",
-    actors: "Shameik Moore, Hailee Steinfeld, Oscar Isaac, Brian Tyree Henry", // Actores principales
-    review: "Una secuela deslumbrante que eleva el listón de la animación y la narración, con una mezcla perfecta de acción, emoción y humor. Un verdadero festín visual",
-            image: "/img/sp.jpg",
-            video: "/videos/sp.mp4",
-            comments: [
-            "¡Increíble! La animación es un verdadero arte y la historia te atrapa desde el principio.",
-    "Definitivamente supera a la primera película. Los nuevos personajes son fantásticos y la trama es emocionante.",
-    "La banda sonora es espectacular. Cada canción complementa perfectamente las escenas.",
-    "Aunque visualmente impresionante, sentí que la trama se complicaba demasiado en ciertos momentos.",
-    "Una experiencia cinematográfica única que redefine lo que puede ser una película de animación de superhéroes.",
-    "Los giros de la historia son inesperados y realmente te hacen pensar en el multiverso.",
-    "Me encantó cómo exploraron más sobre Miles y su crecimiento como Spider-Man. ¡No puedo esperar la próxima!",
-    "Algunas partes fueron un poco lentas, pero en general es un viaje emocionante y vale la pena."
-            ]
-        }
+          title: "Kimi no Suizou wo Tabetai",
+          date: "2018-09-01",
+          genre: "Animación, Drama, Romance",
+          synopsis:
+            "La historia de un joven que descubre que su compañera de clase padece una enfermedad terminal y decide pasar tiempo con ella en sus últimos momentos.",
+          actors: "Mahiro Takasugi, Lynn",
+          review:
+            "Un relato profundo y emotivo que explora la amistad y la pérdida.",
+          image: "///", //Modificar esto
+          video: "///", //Modificar esto
+          comments: [
+            "Kimi no Suizou wo Tabetai es un viaje emocional. La relación entre los personajes es conmovedora y auténtica.",
+            "Una historia desgarradora que te hace valorar cada momento de la vida. Me quedé reflexionando después de verla.",
+            "Aunque la película es triste, la lección sobre la amistad y la pérdida es inspiradora. Sin duda, una experiencia inolvidable.",
+            "Sentí que algunas escenas eran un poco lentas, pero en general la historia vale la pena. ¡Es muy conmovedora!",
+          ],
+        },
+      };
 
-        
-    };
+      // Ocultar todos los detalles por defecto
+      const allMovies = document.querySelectorAll(".movie-details");
+      allMovies.forEach((movie) => (movie.style.display = "none"));
 
-    
-    
-   
-    // Ocultar todos los detalles por defecto
-    const allMovies = document.querySelectorAll('.movie-details');
-    allMovies.forEach(movie => movie.style.display = 'none');
+      if (movieId && movies[movieId]) {
+        const movie = movies[movieId];
+        // Actualizar los detalles de la película
+        document.getElementById("movie-title").textContent = movie.title;
+        document.getElementById("movie-date").textContent = movie.date;
+        document.getElementById("movie-genre").textContent = movie.genre;
+        document.getElementById("movie-synopsis").textContent = movie.synopsis;
+        document.getElementById("movie-actors").textContent = movie.actors;
+        document.getElementById("movie-review").textContent = movie.review;
+        document.getElementById("movie-image").src = movie.image;
+        document.getElementById("movie-video").src = movie.video;
 
-    if (movieId && movies[movieId]) {
-            const movie = movies[movieId];
-            // Actualizar los detalles de la película
-            document.getElementById('movie-title').textContent = movie.title;
-            document.getElementById('movie-date').textContent = movie.date;
-            document.getElementById('movie-genre').textContent = movie.genre;
-            document.getElementById('movie-synopsis').textContent = movie.synopsis;
-            document.getElementById('movie-actors').textContent = movie.actors;
-            document.getElementById('movie-review').textContent = movie.review;
-            document.getElementById('movie-image').src = movie.image;
-            document.getElementById('movie-video').src = movie.video;
+        // Cargar el video correspondiente
+        document.getElementById("movie-video").load();
 
-            // Cargar el video correspondiente
-            document.getElementById('movie-video').load();
+        // Mostrar comentarios en la lista
+        const commentList = document.getElementById("comments-list");
+        movie.comments.forEach((comment) => {
+          const li = document.createElement("li");
+          li.classList.add("comment-item");
+          li.textContent = comment;
+          commentList.appendChild(li);
+        });
+      }
+    </script>
 
-            // Mostrar comentarios en la lista
-            const commentList = document.getElementById('comments-list');
-            movie.comments.forEach(comment => {
-                const li = document.createElement('li');
-                li.classList.add('comment-item');
-                li.textContent = comment;
-                commentList.appendChild(li);
-            });
-        }
+    <script>
+      // Seleccionamos el formulario y la lista de comentarios
+      const form = document.getElementById("comment-form");
+      const commentList = document.getElementById("comments-list");
 
-    
-</script>
-
-<script>
-    // Seleccionamos el formulario y la lista de comentarios
-    const form = document.getElementById('comment-form');
-    const commentList = document.getElementById('comments-list');
-    
-    // Escuchamos el evento 'submit' del formulario
-    form.addEventListener('submit', function(event) {
+      // Escuchamos el evento 'submit' del formulario
+      form.addEventListener("submit", function (event) {
         // Evitar que la página se recargue al enviar el formulario
         event.preventDefault();
-        
+
         // Obtenemos el valor del comentario ingresado
-        const commentInput = document.getElementById('comment');
+        const commentInput = document.getElementById("comment");
         const commentText = commentInput.value;
-    
+
         // Verificamos si el comentario no está vacío
-        if (commentText.trim() !== '') {
-            // Crear un nuevo elemento de lista (li) para el comentario
-            const newComment = document.createElement('li');
-            newComment.classList.add('comment-item');
-            newComment.textContent = commentText;
-    
-            // Añadir el nuevo comentario a la lista
-            commentList.appendChild(newComment);
-    
-            // Limpiar el campo de texto
-            commentInput.value = '';
+        if (commentText.trim() !== "") {
+          // Crear un nuevo elemento de lista (li) para el comentario
+          const newComment = document.createElement("li");
+          newComment.classList.add("comment-item");
+          newComment.textContent = commentText;
+
+          // Añadir el nuevo comentario a la lista
+          commentList.appendChild(newComment);
+
+          // Limpiar el campo de texto
+          commentInput.value = "";
         }
-    });
+      });
     </script>
-    
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<footer class="footer">
-    &copy; 2024 Santiago Bayona Bohorquez. Todos los derechos reservados.
-</footer>
-
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer">
+      &copy; 2024 Santiago Bayona Bohorquez. Todos los derechos reservados.
+    </footer>
+  </body>
 </html>
-
-
-Color
-
-Colores= x,y,z;
-
-X= azul; 
-y= rojo
-z= verde;
-
-
-Colorverde;
-
-If (x=verde)
-mi loco es azul
-
-
-
 
